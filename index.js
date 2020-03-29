@@ -13,7 +13,7 @@ let lengthOfStack = 5
 let stack = new Array(lengthOfStack);
 let lastUpdatedIndex = 0;
 
-addValueToStack = (value) => {
+let addValueToStack = (value) => {
 // pushing value onto the stack
     if (lastUpdatedIndex === lengthOfStack){
         return "Stack is full, cannot push."
@@ -25,21 +25,26 @@ addValueToStack = (value) => {
     }
 }
 
-removeValueFromStack = (value) => {
+let removeValueFromStack = () => {
     // popping values from a stack
     if (lastUpdatedIndex === 0){
         return "Stack is empty,nothing to pop."
     }
     else {
-        stack.splice(1,lastUpdatedIndex - 1);
+        let itemPopped = stack.splice(lastUpdatedIndex - 1,1);
         lastUpdatedIndex -= 1;
         return stack;
     }
 }
 
-printStack = () => {
+let printStack = () => {
     // printing the stack
     return stack;
 }
 
+module.exports = {
+    addValueToStack,
+    removeValueFromStack,
+    printStack
+}
 

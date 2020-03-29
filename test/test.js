@@ -1,46 +1,50 @@
 'use strict';
 
-var expect = require('chai').expect;
-var stackBuilder = require('../index');
+const expect = require('chai').expect;
+const { addValueToStack, removeValueFromStack, printStack } = require('../index');
 
-describe('#numFormatter', function() {
-    it('should convert single digits', function() {
-        var result = numFormatter(1);
-        expect(result).to.equal('1');
+describe('#addValueToStack', function() {
+    it('should add values to stack', function() {
+        addValueToStack(1);
+        addValueToStack(1);
+        addValueToStack(1);
+        addValueToStack("xyz");
+        let result = addValueToStack(1);
+        expect(result).to.eql([1,1,1,"xyz",1]);
     });
 
-    it('should convert double digits', function() {
-        var result = numFormatter(12);
-        expect(result).to.equal('12');
+    it('should not be able to add to stack', function() {
+        let result = addValueToStack(1);
+        expect(result).to.equals("Stack is full, cannot push.");
     });
 
-    it('should convert triple digits', function() {
-        var result = numFormatter(123);
-        expect(result).to.equal('123');
+    it('should pop value from stack', function() {
+        let result = removeValueFromStack();
+        expect(result).to.eql([1,1,1,"xyz",]);
     });
 
-    it('should convert 4 digits', function() {
-        var result = numFormatter(1234);
-        expect(result).to.equal('1,234');
+    it('should push value to stack', function() {
+        let result = addValueToStack("4");
+        expect(result).to.eql([1,1,1,"xyz","4"]);
     });
 
-    it('should convert 5 digits', function() {
-        var result = numFormatter(12345);
-        expect(result).to.equal('12,345');
+    it("should pop till stack empty", function() {
+        removeValueFromStack();
+        removeValueFromStack();
+        removeValueFromStack();
+        removeValueFromStack();
+        removeValueFromStack();
+        let result = removeValueFromStack();
+        expect(result).to.equals("Stack is empty,nothing to pop.");
     });
 
-    it('should convert 6 digits', function() {
-        var result = numFormatter(123456);
-        expect(result).to.equal('123,456');
+    it('should add value to stack', function() {
+        let result = addValueToStack("adding");
+        expect(result).to.eql(["adding"]);
     });
 
-    it('should convert 7 digits', function() {
-        var result = numFormatter(1234567);
-        expect(result).to.equal('1,234,567');
-    });
-
-    it('should convert 8 digits', function() {
-        var result = numFormatter(12345678);
-        expect(result).to.equal('12,345,678');
-    });
+    it("should print stack", function(){
+        let result = printStack();
+        expect(result).to.eql(["adding"]);
+    })
 });
