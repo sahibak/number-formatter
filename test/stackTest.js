@@ -1,9 +1,10 @@
 'use strict';
 
 const expect = require('chai').expect;
-const { addValueToStack, removeValueFromStack, printStack } = require('../index');
+const { addValueToStack, removeValueFromStack, printStack } = require('../lib/stack');
 
-describe('#addValueToStack', function() {
+describe('#addValuesToStack', function() {
+// describe used to group tests - this is a groupping of tests to add values to stack.
     it('should add values to stack', function() {
         addValueToStack(1);
         addValueToStack(1);
@@ -15,7 +16,7 @@ describe('#addValueToStack', function() {
 
     it('should not be able to add to stack', function() {
         let result = addValueToStack(1);
-        expect(result).to.equals("Stack is full, cannot push.");
+        expect(result).to.throw(Error);
     });
 
     it('should pop value from stack', function() {
@@ -27,7 +28,10 @@ describe('#addValueToStack', function() {
         let result = addValueToStack("4");
         expect(result).to.eql([1,1,1,"xyz","4"]);
     });
+});
 
+describe('#removeValuesFromStack', function() {
+// This is a groupping of tests to remove values from stack.
     it("should pop till stack empty", function() {
         removeValueFromStack();
         removeValueFromStack();
@@ -42,7 +46,10 @@ describe('#addValueToStack', function() {
         let result = addValueToStack("adding");
         expect(result).to.eql(["adding"]);
     });
+});
 
+describe('#printCurrentStack', function() {
+// This is a groupping of tests to print current stack.
     it("should print stack", function(){
         let result = printStack();
         expect(result).to.eql(["adding"]);
