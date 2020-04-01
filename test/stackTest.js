@@ -1,9 +1,9 @@
 'use strict';
 
 const expect = require('chai').expect;
-// const { addValueToStack, removeValueFromStack, printStack } = require('../library/stack');
 const { StackCreation } = require('../library/stack');
 
+// creating 2 stacks for testing 
 let stack1 = new StackCreation(5);
 let stack2 = new StackCreation(3);
 
@@ -56,7 +56,7 @@ describe("ensuring max length of stack 1 is still as intended by user", function
         expect(result).to.equal(1);
     });
 
-    it("should only only to add 4 more items to the stack",function(){
+    it("max length of the stack is followed",function(){
         stack1.addValueToStack("item1");
         stack1.addValueToStack(5);
         stack1.addValueToStack(6);

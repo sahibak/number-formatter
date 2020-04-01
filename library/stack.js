@@ -1,11 +1,11 @@
 'use strict';
 
-// /**
-//  * Push and pop from a stack
-//  * @param {string} value
-//  * @param {number} value
-//  * @return {array}
-//  */
+/**
+ * Push and pop from a stack
+ * @param {string} value
+ * @param {number} value
+ * @return {array}
+ */
 
 class StackCreation{
     //  creating a stack of length = lengthOfStack
@@ -51,9 +51,3 @@ class StackCreation{
 }
 
 module.exports = {StackCreation};
-    // // exporting modules from the file to allow to be used in other files
-    // module.exports = {
-    //     addValueToStack,
-    //     removeValueFromStack,
-    //     printStack
-    // }
