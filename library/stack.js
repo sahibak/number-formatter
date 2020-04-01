@@ -1,13 +1,13 @@
 'use strict';
 
-/**
+/** @TODO add this to all methods
  * Push and pop from a stack
  * @param {string} value
  * @param {number} value
  * @return {array}
  */
 
-class StackCreation{
+class Stack{
     //  creating a stack of length = lengthOfStack
     // creating a new array of the length provided
     // setting up initial index to 0
@@ -21,7 +21,7 @@ class StackCreation{
     // pushing value onto the stack
     // if stack is full, throwing an exception
         if (this.lastUpdatedIndex === this.lengthOfStack){
-            return "Error";
+            throw new Error ("Error");
         }
         this.stack[this.lastUpdatedIndex] = value;
         this.lastUpdatedIndex += 1;
@@ -32,11 +32,12 @@ class StackCreation{
     // popping values from a stack
     // if stack is empty, throwing an exception
         if (this.lastUpdatedIndex === 0){
-            return "Error";
+            throw new Error ("Error");
         }
-        let itemPopped = this.stack.splice(this.lastUpdatedIndex - 1,1);
         this.lastUpdatedIndex -= 1;
-        return this.stack;
+        let poppedValue = this.stack[this.lastUpdatedIndex];
+        this.stack[this.lastUpdatedIndex] = null;
+        return poppedValue;
     }
 
     printStack(){
@@ -50,4 +51,4 @@ class StackCreation{
     }
 }
 
-module.exports = {StackCreation};
+module.exports = {Stack};
