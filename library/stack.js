@@ -17,7 +17,7 @@ class Stack {
     * @return {integer}
     */
         if (!(Number.isInteger(lengthOfStack))) {
-            return 0;
+            throw new Error("Provide integer value for length.")
         }
         return lengthOfStack;
     }

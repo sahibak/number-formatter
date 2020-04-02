@@ -7,7 +7,6 @@ const { Stack } = require("../library/stack");
 let stack1 = new Stack(5);
 let stack2 = new Stack(3);
 let stack3 = new Stack(0);
-let stack4 = new Stack("n");
 
 describe("#addValuesToStack1", function() {
 // describe used to group tests - this is a groupping of tests to add/remove values from stack1
@@ -99,9 +98,8 @@ describe("#printCurrentStacks", function() {
     });
 });
 
-describe("#printing the lengths of stack4 and stack4", function() {
-    it("should create a stack4 with length zero", function() {
-        let result = stack4.size();
-        expect(result).to.equal(0);
+describe("#Create stack with non-integer length", function() {
+    it("should throw an error", function() {
+        expect(() => new Stack("n")).to.throw();
     });
 });
