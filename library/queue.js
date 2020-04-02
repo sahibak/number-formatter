@@ -64,6 +64,14 @@ class Queue {
         // checking length of queue
         return this.queue.length;
     }
+
+    addValues(listOfValues){
+        // add values to the empty queue till full from a list of values provides.
+        for (let i = 0; i < this.lengthOfQueue; i++) {
+            this.queue[i] = listOfValues[i];
+        }
+        return this.queue;
+    }
 }
 
 module.exports = {Queue};
