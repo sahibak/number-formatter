@@ -22,7 +22,7 @@ describe("#addValuesToStack1", function() {
 
     it("confirm the correct value is popped from the stack1", function() {
         let result = stack1.pop();
-        expect(1).to.equal(1);
+        expect(result).to.equal(1);
     });
 
     it("confirm the stack1 after pop", function() {
@@ -46,8 +46,7 @@ describe("#addValuesToStack1", function() {
     });
 
     it("shoudl give an error when trying to pop from empty stack1", function() {
-        let result = stack1.pop();
-        expect(result).to.throw();
+        expect(stack1.pop).to.throw();
     })
 
     it("should add value to stack1", function() {
@@ -67,27 +66,23 @@ describe("#ensuring max length of stack 1 is still as intended by user", functio
         stack1.push(5);
         stack1.push(6);
         stack1.push("item2");
-        let resultOnStackFull = stack1.push("item3");
-        expect(resultOnStackFull).to.throw();
+        expect(() => stack1.push("item3")).to.throw();
     });
 });
 
 describe("#removeValuesFromStack2 which is currently empty", function() {
     it("popping values from stack2 shoudl should throw and error.", function() {
-        let result = stack2.pop();
-        expect(result).to.throw();
+        expect(stack2.pop).to.throw();
     });
 });
 
 describe("#updating stack3", function() {
     it("should not allow for value to be added to stack3", function() {
-        let result = stack3.push();
-        expect(result).to.throw();
+        expect(()=>stack3.push("exy")).to.throw();
     });
 
     it("should not allow to pop values from stack3", function() {
-        let result = stack3.pop();
-        expect(result).to.throw();
+        expect(stack3.pop).to.throw();
     })
 });
 
@@ -100,7 +95,7 @@ describe("#printCurrentStacks", function() {
 
     it("should print stack2 (which is empty)", function() {
         let result = stack2.print();
-        expect(result).to.eql([])
+        expect(result).to.eql(new Array(3));
     });
 });
 

@@ -1,25 +1,22 @@
 'use strict';
 
-/** @TODO add this to all methods
- * Push and pop from a stack
- * @param {string} value
- * @param {number} value
- * @return {array}
- */
-
 class Stack {
     //  creating a stack of length = lengthOfStack
     // creating a new array of the length provided
     // setting up initial index to 0
     constructor(lengthOfStack) {
-        this.lengthOfStack = this.checkLengthInput(lengthOfStack);
+        this.lengthOfStack = this.verifyLengthInput(lengthOfStack);
         this.position = 0;
         this.stack = new Array(this.lengthOfStack);
     }
 
-    checkLengthInput(lengthOfStack){
+    verifyLengthInput(lengthOfStack) {
     // if the lengthOfStack provided in stack is non-numeric, setting lengthOfStak === 0
-        if (!(Number(lengthOfStack))) {
+    /** 
+    * @param {integer} lengthOfStack
+    * @return {integer}
+    */
+        if (!(Number.isInteger(lengthOfStack))) {
             return 0;
         }
         return lengthOfStack;
@@ -28,6 +25,10 @@ class Stack {
     push(value) {
     // pushing value onto the stack
     // if stack is full, throwing an exception
+    /** 
+    * @param {any} value
+    * @return {array}
+    */
         if (this.position === this.lengthOfStack) {
             throw new Error ("Error");
         }
@@ -39,6 +40,9 @@ class Stack {
     pop() {
     // popping values from a stack
     // if stack is empty, throwing an exception
+    /** 
+    * @return {any}
+    */
         if(this.position === 0) {
             throw new Error ("Error");
         }
@@ -50,11 +54,17 @@ class Stack {
 
     print() {
         // printing the stack
+        /** 
+        * @return {array}
+        */
         return this.stack;
     }
 
     size() {
         // checking length of stack
+        /** 
+        * @return {integer}
+        */
         return this.stack.length;
     }
 }
