@@ -41,6 +41,11 @@ describe("#Updating queue2", function () {
     let result = queue2.size();
     expect(result).to.equal(3);
   });
+
+  it("should add an item to queue2", function () {
+    let result = queue2.push("ldjfglfd");
+    expect(result).to.eql([null, "ldjfglfd", null]);
+  });
 });
 
 describe("#Remove values from queue with length zero", function () {

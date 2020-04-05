@@ -9,7 +9,7 @@ class Queue {
     this.lengthOfQueue = this.verifyLengthInput(lengthOfQueue);
     this.head = 0;
     this.tail = 0;
-    this.count = 0;
+    this.countOfItems = 0;
     this.queue = new Array(this.lengthOfQueue);
   }
 
@@ -31,12 +31,11 @@ class Queue {
      * @param {any} value
      * @return {array}
      */
-    if (this.tail === this.head) {
-      // && this.count === this.lengthOfQueue
+    if (this.tail === this.head && this.count === this.lengthOfQueue) {
       throw new Error("Error");
     }
     this.queue[this.tail] = value;
-    this.count += 1;
+    this.countOfItems += 1;
     this.tail += 1;
     this.tail === this.lengthOfQueue
       ? (this.tail = this.tail % this.lengthOfQueue)
@@ -49,7 +48,7 @@ class Queue {
      * Popping values from a queue, if empty throw error
      * @return {any}
      */
-    if (this.head === this.tail && this.count === 0) {
+    if (this.head === this.tail && this.countOfItems === 0) {
       throw new Error("Error");
     }
     let poppedValue = this.queue[this.head];
@@ -58,7 +57,7 @@ class Queue {
     this.head === this.lengthOfQueue
       ? (this.head = this.head % this.lengthOfQueue)
       : this.head;
-    this.count -= 1;
+    this.countOfItems -= 1;
     return poppedValue;
   }
 
@@ -86,7 +85,7 @@ class Queue {
      */
     for (let i = 0; i < this.lengthOfQueue; i++) {
       this.queue[i] = listOfValues[i];
-      this.count += 1;
+      this.countOfItems += 1;
     }
     return this.queue;
   }
@@ -97,7 +96,7 @@ class Queue {
      * This function is used for testing.
      * @return {array}
      */
-    for (let i = this.count; i > 0; i--) {
+    for (let i = this.countOfItems; i > 0; i--) {
       this.queue[this.head] = null;
       this.head += 1;
       this.head === this.lengthOfQueue ? (this.head = 0) : this.head;
