@@ -5,6 +5,8 @@ install:
   - npm install
 
 script:
+  - npx prettier@2.0.2 -c library/*.js
+  - npx prettier@2.0.2 -c test/*.js
   - npm run cover
 
 # Send coverage data to Coveralls
