@@ -62,7 +62,7 @@ class Stack {
      * printing the stack
      * @return {stack}
      */
- return this.stack;
+    return this.stack;
   }
 
   size() {
