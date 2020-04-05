@@ -5,6 +5,7 @@ install:
   - npm install
 
 script:
+  - npx prettier@2.0.2 -c library/queue.js test/test.js
   - npm run cover
 
 # Send coverage data to Coveralls
