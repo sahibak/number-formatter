@@ -36,6 +36,11 @@ describe("#Updating queue2", function () {
   it("shoudl give an error when trying to pop from empty queue2", function () {
     expect(queue2.pop).to.throw();
   });
+
+  it("should maintain the same length as initialization", function () {
+    result = queue.size();
+    expect(result).to.equal(3);
+  });
 });
 
 describe("#Remove values from queue with length zero", function () {
