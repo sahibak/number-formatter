@@ -38,7 +38,7 @@ describe("#Updating queue2", function () {
   });
 
   it("should maintain the same length as initialization", function () {
-    result = queue.size();
+    let result = queue2.size();
     expect(result).to.equal(3);
   });
 });
