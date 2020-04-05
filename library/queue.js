@@ -27,7 +27,7 @@ class Queue {
 
   push(value) {
     /**
-     * Pushing value onto the queue
+     * Pushing value onto the queue, if full throw error
      * @param {any} value
      * @return {array}
      */
@@ -46,10 +46,11 @@ class Queue {
 
   pop() {
     /**
-     * Popping values from a queue
+     * Popping values from a queue, if empty throw error
      * @return {any}
      */
-    if (this.head === this.tail && this.count === 0) {
+    if (this.head === this.tail) {
+      // && this.count === 0
       throw new Error("Error");
     }
     let poppedValue = this.queue[this.head];
