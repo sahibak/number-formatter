@@ -49,8 +49,7 @@ class Queue {
      * Popping values from a queue, if empty throw error
      * @return {any}
      */
-    if (this.head === this.tail) {
-      // && this.count === 0
+    if (this.head === this.tail && this.count === 0) {
       throw new Error("Error");
     }
     let poppedValue = this.queue[this.head];
