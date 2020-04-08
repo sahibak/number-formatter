@@ -1,12 +1,17 @@
 "use strict";
 
 class Queue {
-  //  creating a queue of length = lengthOfQueue
-  // creating a new array of the length provided
-  // setting up head and tail values. Head value will determine location of pop and tail value will determine location of push.
-  // count keeps a count of number of items in the array at a given time.
+  /**
+   * creating a queue of length = lengthOfQueue
+   * creating a new array of the length provided
+   * setting index of 1st entry (head) to 0
+   * setting index of 1st exit (tail) to 0
+   * @param {integer} lengthOfStack
+   * @return {queue}
+   */
   constructor(lengthOfQueue) {
-    this.lengthOfQueue = this.verifyLengthInput(lengthOfQueue);
+    this.verifyLengthInput(lengthOfQueue);
+    this.lengthOfQueue = lengthOfQueue;
     this.head = 0;
     this.tail = 0;
     this.countOfItems = 0;
@@ -31,7 +36,7 @@ class Queue {
      * @param {any} value
      * @return {array}
      */
-    if (this.tail === this.head && this.count === this.lengthOfQueue) {
+    if (this.count === this.lengthOfQueue) {
       throw new Error("Error");
     }
     this.queue[this.tail] = value;
@@ -48,7 +53,7 @@ class Queue {
      * Popping values from a queue, if empty throw error
      * @return {any}
      */
-    if (this.head === this.tail && this.countOfItems === 0) {
+    if (this.countOfItems === 0) {
       throw new Error("Error");
     }
     let poppedValue = this.queue[this.head];
