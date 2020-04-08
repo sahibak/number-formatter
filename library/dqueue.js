@@ -1,10 +1,14 @@
 "use strict";
 
 class Dqueue {
-  //  creating a queue of length = lengthOfDqueue
-  // creating a new array of the length provided
-  // setting up head and tail values. Head value will determine location of pop and tail value will determine location of push.
-  // count keeps a count of number of items in the array at a given time.
+  /**
+   * creating a dqueue of length = lengthOfDqueue
+   * creating a new array of the length provided
+   * setting index of 1st entry (head) to 0
+   * setting index of 1st exit (tail) to 0
+   * @param {integer} lengthOfDqueue
+   * @return {dqueue}
+   */
   constructor(lengthOfDqueue) {
     this.lengthOfDqueue = this.verifyLengthInput(lengthOfDqueue);
     this.head = 0;
