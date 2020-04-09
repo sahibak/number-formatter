@@ -4,15 +4,17 @@ class Dqueue {
   /**
    * creating a dqueue of length = lengthOfDqueue
    * creating a new array of the length provided
-   * setting index of 1st entry (head) to 0
-   * setting index of 1st exit (tail) to 0
+   * @TODO need to get better way to make the comments below
+   * setting head (position where the entry will be made from front)
+   * setting tail (position where the entry will be made from the back)
    * @param {integer} lengthOfDqueue
    * @return {dqueue}
    */
   constructor(lengthOfDqueue) {
-    this.lengthOfDqueue = this.verifyLengthInput(lengthOfDqueue);
+    this.verifyLengthInput(lengthOfDqueue);
+    this.lengthOfDqueue = lengthOfDqueue;
     this.head = 0;
-    this.tail = 0;
+    this.tail = this.lengthOfDqueue - 1;
     this.count = 0;
     this.dqueue = new Array(this.lengthOfDqueue);
   }
@@ -29,45 +31,80 @@ class Dqueue {
     return lengthOfDqueue;
   }
 
-  push(value) {
+  pushToFront(value) {
     /**
-     * Pushing value onto the dqueue, if full throw error
+     * Pushing value onto the dqueue from front, if full throw error
      * @param {any} value
      * @return {array}
      */
-    if (this.tail === this.head) {
+    if (this.count === this.lengthOfDqueue) {
       throw new Error("Error");
     }
-    this.queue[this.tail] = value;
+    this.dqueue[this.head] = value;
     this.count += 1;
-    this.tail += 1;
-    this.tail === this.lengthOfDqueue
-      ? (this.tail = this.tail % this.lengthOfDqueue)
-      : this.tail;
-    return this.dqueue;
-  }
-
-  pop() {
-    /**
-     * Popping values from a queue, if empty throw error
-     * @return {any}
-     */
-    if (this.head === this.tail && this.count === 0) {
-      throw new Error("Error");
-    }
-    let poppedValue = this.dqueue[this.head];
-    this.dqueue[this.head] = null;
     this.head += 1;
     this.head === this.lengthOfDqueue
       ? (this.head = this.head % this.lengthOfDqueue)
       : this.head;
+    return this.dqueue;
+  }
+
+  pushToBack(value) {
+    /**
+     * Pushing value onto the dqueue from back, if full throw error
+     * @param {any} value
+     * @return {array}
+     */
+    if (this.count === this.lengthOfDqueue) {
+      throw new Error("Error");
+    }
+    this.dqueue[this.tail] = value;
+    this.count += 1;
+    this.tail -= 1;
+    return this.dqueue;
+  }
+
+  popFromFront() {
+    /**
+     * Popping values from dqueue from front, if empty throw error
+     * @return {any}
+     */
+    if (this.count === 0) {
+      throw new Error("Error");
+    }
+    this.head -= 1;
+    let poppedValue = this.dqueue[this.head];
+    this.dqueue[this.head] = null;
     this.count -= 1;
+    this.resetValuesOnPop();
+    console.log(poppedValue, this.dqueue);
+    return poppedValue;
+  }
+
+  popFromBack() {
+    /**
+     * Popping values from dqueue from back, if empty
+     *  - throw error
+     *  - reset head and tail values
+     * When stack is empty, reset head and tail values.
+     * @Todo when tail === -length, then how do i pop further from back? Is my approach correct?
+     * @return {any}
+     */
+    if (this.count === 0) {
+      throw new Error("Error");
+    }
+    this.tail += 1;
+    this.tail === this.lengthOfDqueue ? (this.tail = 0) : this.tail;
+    let poppedValue = this.dqueue[this.tail];
+    this.dqueue[this.tail] = null;
+    this.count -= 1;
+    this.resetValuesOnPop();
     return poppedValue;
   }
 
   print() {
     /**
-     * printing the queue
+     * printing the dqueue
      * @return {array}
      */
     return this.dqueue;
@@ -75,37 +112,34 @@ class Dqueue {
 
   size() {
     /**
-     * checking length of queue
+     * checking length of dqueue
      * @return {integer}
      */
     return this.dqueue.length;
   }
 
-  createQueue(listOfValues) {
+  resetValuesOnPop() {
     /**
-     * Add values to the empty queue till it is full, from a list of values provides.
-     * This function is used for testing.
-     * @return {array}
+     * this is a helper function, to reset the values of head and tail when all values have been popped.
+     * @return {integer}
      */
-    for (let i = 0; i < this.lengthOfDqueue; i++) {
-      this.dqueue[i] = listOfValues[i];
-      this.count += 1;
+    if (this.count === 0) {
+      this.head = 0;
+      this.tail = this.lengthOfDqueue - 1;
     }
-    return this.dqueue;
+    return this.head, this.tail;
   }
 
-  emptyQueue() {
+  resetValuesOnPush() {
     /**
-     * Empty the queue.
-     * This function is used for testing.
-     * @return {array}
+     * this is a helper function, to reset the values of head and tail to ensure they remain valid (ie non-negative)
+     * @return {integer}
      */
-    for (let i = this.count; i > 0; i--) {
-      this.dqueue[this.head] = null;
-      this.head += 1;
-      this.head === this.lengthOfDqueue ? (this.head = 0) : this.head;
+    if (this.head < 0) {
+      this.head = this.lengthOfDqueue - 1;
+      this.tail = this.lengthOfDqueue - 1;
     }
-    return this.dqueue;
+    return this.head, this.tail;
   }
 }
 

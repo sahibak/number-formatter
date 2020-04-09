@@ -6,7 +6,7 @@ class Queue {
    * creating a new array of the length provided
    * setting index of 1st entry (head) to 0
    * setting index of 1st exit (tail) to 0
-   * @param {integer} lengthOfStack
+   * @param {integer} lengthOfQueue
    * @return {queue}
    */
   constructor(lengthOfQueue) {
