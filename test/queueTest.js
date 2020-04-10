@@ -55,7 +55,7 @@ describe("#Remove values from queue with length zero", function () {
 });
 
 describe("#Should not allow to add values to queue with length zero.", function () {
-  it("should not allow for value to be added to stack3", function () {
+  it("should not allow for value to be added to queue3", function () {
     expect(() => this.queue3.push("xyx")).to.throw();
   });
 });
