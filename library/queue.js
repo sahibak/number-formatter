@@ -42,9 +42,7 @@ class Queue {
     this.queue[this.tail] = value;
     this.countOfItems += 1;
     this.tail += 1;
-    this.tail === this.lengthOfQueue
-      ? (this.tail = this.tail % this.lengthOfQueue)
-      : this.tail;
+    this.tail = this.tail % this.lengthOfQueue;
     return this.queue;
   }
 
@@ -59,9 +57,7 @@ class Queue {
     let poppedValue = this.queue[this.head];
     this.queue[this.head] = null;
     this.head += 1;
-    this.head === this.lengthOfQueue
-      ? (this.head = this.head % this.lengthOfQueue)
-      : this.head;
+    this.head === this.head % this.lengthOfQueue;
     this.countOfItems -= 1;
     return poppedValue;
   }
@@ -89,8 +85,7 @@ class Queue {
      * @return {array}
      */
     for (let i = 0; i < this.lengthOfQueue; i++) {
-      this.queue[i] = listOfValues[i];
-      this.countOfItems += 1;
+      this.push(listOfValues[i]);
     }
     return this.queue;
   }
@@ -102,9 +97,7 @@ class Queue {
      * @return {array}
      */
     for (let i = this.countOfItems; i > 0; i--) {
-      this.queue[this.head] = null;
-      this.head += 1;
-      this.head === this.lengthOfQueue ? (this.head = 0) : this.head;
+      this.pop();
     }
     return this.queue;
   }
