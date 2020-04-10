@@ -44,7 +44,7 @@ class Dqueue {
     this.dqueue[this.head] = value;
     this.count += 1;
     this.head += 1;
-    this.head === this.lengthOfDqueue ? (this.head = 0) : this.head;
+    this.head === this.head % this.lengthOfDqueue;
     return this.dqueue;
   }
 
