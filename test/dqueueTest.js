@@ -6,6 +6,8 @@ const { Dqueue } = require("../library/dqueue");
 // creating dqueues for testing
 let dqueue1 = new Dqueue(5);
 let dqueue2 = new Dqueue(5);
+let dqueue3 = new Dqueue(4);
+let dqueue4 = new Dqueue(0);
 
 describe("#Updating dqueue1", function () {
   it("should add values dqueue1 from front and back", function () {
@@ -59,6 +61,50 @@ describe("#Updating dqueue2", function () {
     dqueue2.popFromFront();
     dqueue2.popFromFront();
     let result = dqueue2.popFromFront();
-    expect(result).to.eql("a");
+    expect(result).to.eql("e");
+  });
+});
+
+describe("#Updating dqueue3", function () {
+  it("should add values dqueue3", function () {
+    dqueue3.pushToBack("a");
+    dqueue3.pushToFront("b");
+    dqueue3.pushToFront("c");
+    let result = dqueue3.pushToBack("d");
+    expect(result).to.eql(["b", "c", "d", "a"]);
+  });
+
+  it("should remove values dqueue3 and then add in other values", function () {
+    dqueue3.popFromFront();
+    dqueue3.popFromFront();
+    dqueue3.popFromFront();
+    let result = dqueue3.print();
+    expect(result).to.eql([null, null, "d", null]);
+  });
+});
+
+describe("#Initalize a dqueue with non-integer length value", function () {
+  it("should throw and error", function () {
+    expect(() => new Dqueue("n")).to.throw();
+  });
+});
+
+describe("#Remove values from dqueue with length zero", function () {
+  it("throw an error when trying to pop values from dqueue4 from front", function () {
+    expect(dqueue4.popFromFront).to.throw();
+  });
+
+  it("throw an error when trying to pop values from dqueue4 from back", function () {
+    expect(dqueue4.popFromBack).to.throw();
+  });
+});
+
+describe("#Should not allow to add values to dqueue with length zero.", function () {
+  it("should not allow for value to be added to dqueue from front", function () {
+    expect(() => this.dqueue4.pushToFront("xyx")).to.throw();
+  });
+
+  it("should not allow for value to be added to dqueue from back", function () {
+    expect(() => this.dqueue4.pushToBack("xyx")).to.throw();
   });
 });
