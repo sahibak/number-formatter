@@ -44,7 +44,7 @@ class Dqueue {
     this.dqueue[this.head] = value;
     this.count += 1;
     this.head += 1;
-    this.head === this.head % this.lengthOfDqueue;
+    this.head = this.head % this.lengthOfDqueue;
     return this.dqueue;
   }
 
@@ -95,7 +95,7 @@ class Dqueue {
       throw new Error("Error");
     }
     this.tail += 1;
-    this.tail === this.lengthOfDqueue ? (this.tail = 0) : this.tail;
+    this.tail = this.tail % this.lengthOfDqueue;
     let poppedValue = this.dqueue[this.tail];
     this.dqueue[this.tail] = null;
     this.count -= 1;

@@ -8,6 +8,7 @@ let dqueue1 = new Dqueue(5);
 let dqueue2 = new Dqueue(5);
 let dqueue3 = new Dqueue(4);
 let dqueue4 = new Dqueue(0);
+let dqueue5 = new Dqueue(2);
 
 describe("#Updating dqueue1", function () {
   it("should add values dqueue1 from front and back", function () {
@@ -74,6 +75,10 @@ describe("#Updating dqueue3", function () {
     expect(result).to.eql(["b", "c", "d", "a"]);
   });
 
+  it("should not add values dqueue3", function () {
+    expect(() => dqueue3.pushToFront("c")).to.throw();
+  });
+
   it("should remove values dqueue3 and then add in other values", function () {
     dqueue3.popFromFront();
     dqueue3.popFromFront();
@@ -106,5 +111,15 @@ describe("#Should not allow to add values to dqueue with length zero.", function
 
   it("should not allow for value to be added to dqueue from back", function () {
     expect(() => this.dqueue4.pushToBack("xyx")).to.throw();
+  });
+});
+
+describe("#updating dqueue5", function () {
+  it("should not allow to add value to dqueue after length has been reached.", function () {
+    dqueue5.pushToFront("b");
+    dqueue5.pushToFront("b");
+    let result = dqueue5.size();
+    expect(result).to.equal(2);
+    expect(() => dqueue5.pushToFront("b")).to.throw();
   });
 });
