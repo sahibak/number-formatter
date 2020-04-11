@@ -3,10 +3,9 @@
 class Dqueue {
   /**
    * creating a dqueue of length = lengthOfDqueue
-   * creating a new array of the length provided
-   * @TODO need to get better way to make the comments below
-   * setting head (position where the entry will be made from front)
-   * setting tail (position where the entry will be made from the back)
+   * if the length provided is non-integer throw an error.
+   * setting head (position where the entry will be made from front,ie clockwise && position where pop from front will be made)
+   * setting tail (position where the entry will be made from the back, ie counter-clockwise && position where pop from back will be made)
    * @param {integer} lengthOfDqueue
    * @return {dqueue}
    */
@@ -33,7 +32,7 @@ class Dqueue {
 
   pushToFront(value) {
     /**
-     * Pushing value onto the dqueue from front, if full throw error
+     * Pushing value onto the dqueue from front(clockwise), if full throw error
      * adjusting the value of the head when it is equal to the length
      * @param {any} value
      * @return {array}
@@ -50,7 +49,7 @@ class Dqueue {
 
   pushToBack(value) {
     /**
-     * Pushing value onto the dqueue from back, if full throw error
+     * Pushing value onto the dqueue from back(counter-clockwise), if full throw error
      * adjusting the value of tail when it is negative
      * @param {any} value
      * @return {array}
@@ -68,7 +67,9 @@ class Dqueue {
   popFromFront() {
     /**
      * Popping values from dqueue from front, if empty throw error
-     * readjusting the value of head when it is negative
+     * Popping values from the front === last value added clockwise.
+     * Readjusting the value of head when it is negative
+     * When dqueue is empty, reset head and tail values.
      * @return {any}
      */
     if (this.count === 0) {
@@ -89,7 +90,7 @@ class Dqueue {
      * Popping values from dqueue from back, if empty throw error
      * Reset tail value when it is equal to the length
      * When dqueue is empty, reset head and tail values.
-     * @Todo when tail === -length, then how do i pop further from back? Is my approach correct?
+     * Popping values from the back === first value added to dqueue when going counter- clockwise.
      * @return {any}
      */
     if (this.count === 0) {
