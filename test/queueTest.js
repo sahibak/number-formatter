@@ -17,7 +17,7 @@ function createQueue(queue, listOfValues) {
   for (let i = 0; i < queue.lengthOfQueue; i++) {
     queue.push(listOfValues[i]);
   }
-  return queue;
+  return queue.queue;
 }
 
 function emptyQueue(queue) {
@@ -29,12 +29,12 @@ function emptyQueue(queue) {
   for (let i = queue.countOfItems; i > 0; i--) {
     queue.pop();
   }
-  return queue;
+  return queue.queue;
 }
 
 describe("#Updating queue2", function () {
   it("should add values to full length of queue2", function () {
-    let result = queue2.createQueue([1, 2, "xyz"]);
+    let result = createQueue(queue2, [1, 2, "xyz"]);
     expect(result).to.eql([1, 2, "xyz"]);
   });
 
@@ -54,7 +54,7 @@ describe("#Updating queue2", function () {
   });
 
   it("should pop till queue2 empty", function () {
-    let result = queue2.emptyQueue();
+    let result = emptyQueue(queue2);
     expect(result).to.eql([null, null, null]);
   });
 

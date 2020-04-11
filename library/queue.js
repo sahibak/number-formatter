@@ -77,30 +77,6 @@ class Queue {
      */
     return this.queue.length;
   }
-
-  // createQueue(listOfValues) {
-  //   /**
-  //    * Add values to the empty queue till it is full, from a list of values provides.
-  //    * This function is used for testing.
-  //    * @return {array}
-  //    */
-  //   for (let i = 0; i < this.lengthOfQueue; i++) {
-  //     this.push(listOfValues[i]);
-  //   }
-  //   return this.queue;
-  // }
-
-  // emptyQueue() {
-  //   /**
-  //    * Empty the queue.
-  //    * This function is used for testing.
-  //    * @return {array}
-  //    */
-  //   for (let i = this.countOfItems; i > 0; i--) {
-  //     this.pop();
-  //   }
-  //   return this.queue;
-  // }
 }
 
 module.exports = { Queue };
