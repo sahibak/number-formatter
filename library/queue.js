@@ -3,7 +3,7 @@
 class Queue {
   /**
    * creating a queue of length = lengthOfQueue
-   * creating a new array of the length provided
+   * if the length is non-integer, throw an error.
    * setting index of 1st entry (head) to 0
    * setting index of 1st exit (tail) to 0
    * @param {integer} lengthOfQueue
@@ -33,6 +33,7 @@ class Queue {
   push(value) {
     /**
      * Pushing value onto the queue, if full throw error
+     * as items are added to the queue, the tail index keeps increasing till length is reached and then resets to zero.
      * @param {any} value
      * @return {array}
      */
@@ -42,15 +43,14 @@ class Queue {
     this.queue[this.tail] = value;
     this.countOfItems += 1;
     this.tail += 1;
-    this.tail === this.lengthOfQueue
-      ? (this.tail = this.tail % this.lengthOfQueue)
-      : this.tail;
+    this.tail = this.tail % this.lengthOfQueue;
     return this.queue;
   }
 
   pop() {
     /**
      * Popping values from a queue, if empty throw error
+     * as items are popped, head index keeps increasing till length is reached and then reset to zero.
      * @return {any}
      */
     if (this.countOfItems === 0) {
@@ -59,9 +59,7 @@ class Queue {
     let poppedValue = this.queue[this.head];
     this.queue[this.head] = null;
     this.head += 1;
-    this.head === this.lengthOfQueue
-      ? (this.head = this.head % this.lengthOfQueue)
-      : this.head;
+    this.head = this.head % this.lengthOfQueue;
     this.countOfItems -= 1;
     return poppedValue;
   }
@@ -80,33 +78,6 @@ class Queue {
      * @return {integer}
      */
     return this.queue.length;
-  }
-
-  createQueue(listOfValues) {
-    /**
-     * Add values to the empty queue till it is full, from a list of values provides.
-     * This function is used for testing.
-     * @return {array}
-     */
-    for (let i = 0; i < this.lengthOfQueue; i++) {
-      this.queue[i] = listOfValues[i];
-      this.countOfItems += 1;
-    }
-    return this.queue;
-  }
-
-  emptyQueue() {
-    /**
-     * Empty the queue.
-     * This function is used for testing.
-     * @return {array}
-     */
-    for (let i = this.countOfItems; i > 0; i--) {
-      this.queue[this.head] = null;
-      this.head += 1;
-      this.head === this.lengthOfQueue ? (this.head = 0) : this.head;
-    }
-    return this.queue;
   }
 }
 
