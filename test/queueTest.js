@@ -8,28 +8,28 @@ let queue2 = new Queue(3);
 let queue3 = new Queue(0);
 
 // Helper functions
-function createQueue(listOfValues) {
+function createQueue(queue, listOfValues) {
   /**
    * Add values to the empty queue till it is full, from a list of values provides.
    * This function is used for testing.
    * @return {array}
    */
-  for (let i = 0; i < this.lengthOfQueue; i++) {
-    this.queue.push(listOfValues[i]);
+  for (let i = 0; i < queue.lengthOfQueue; i++) {
+    queue.push(listOfValues[i]);
   }
-  return this.queue;
+  return queue;
 }
 
-function emptyQueue() {
+function emptyQueue(queue) {
   /**
    * Empty the queue.
    * This function is used for testing.
    * @return {array}
    */
-  for (let i = this.countOfItems; i > 0; i--) {
-    this.queue.pop();
+  for (let i = queue.countOfItems; i > 0; i--) {
+    queue.pop();
   }
-  return this.queue;
+  return queue;
 }
 
 describe("#Updating queue2", function () {
