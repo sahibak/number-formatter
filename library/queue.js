@@ -3,7 +3,7 @@
 class Queue {
   /**
    * creating a queue of length = lengthOfQueue
-   * creating a new array of the length provided
+   * if the length is non-integer, throw an error.
    * setting index of 1st entry (head) to 0
    * setting index of 1st exit (tail) to 0
    * @param {integer} lengthOfQueue
@@ -33,6 +33,7 @@ class Queue {
   push(value) {
     /**
      * Pushing value onto the queue, if full throw error
+     * as items are added to the queue, the tail index keeps increasing till length is reached and then resets to zero.
      * @param {any} value
      * @return {array}
      */
@@ -49,6 +50,7 @@ class Queue {
   pop() {
     /**
      * Popping values from a queue, if empty throw error
+     * as items are popped, head index keeps increasing till length is reached and then reset to zero.
      * @return {any}
      */
     if (this.countOfItems === 0) {
