@@ -3,9 +3,34 @@
 const expect = require("chai").expect;
 const { Queue } = require("../library/queue");
 
-// creating queues for testing
+// Creating queues for testing
 let queue2 = new Queue(3);
 let queue3 = new Queue(0);
+
+// Helper functions
+function createQueue(listOfValues) {
+  /**
+   * Add values to the empty queue till it is full, from a list of values provides.
+   * This function is used for testing.
+   * @return {array}
+   */
+  for (let i = 0; i < this.lengthOfQueue; i++) {
+    this.queue.push(listOfValues[i]);
+  }
+  return this.queue;
+}
+
+function emptyQueue() {
+  /**
+   * Empty the queue.
+   * This function is used for testing.
+   * @return {array}
+   */
+  for (let i = this.countOfItems; i > 0; i--) {
+    this.queue.pop();
+  }
+  return this.queue;
+}
 
 describe("#Updating queue2", function () {
   it("should add values to full length of queue2", function () {
