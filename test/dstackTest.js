@@ -46,7 +46,7 @@ describe("#Updating dstack1", function () {
       null,
       null,
       null,
-      null
+      null,
     ]);
   });
 });
