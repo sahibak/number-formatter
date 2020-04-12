@@ -40,14 +40,14 @@ class Dstack {
      * @param {any} value
      * @return {Dstack}
      */
-    if (this.position === this.maxLength) {
+    if (this.position === this.maxLength || this.lengthOfDstack === 0) {
       throw new Error("Error");
     }
     if (this.position === this.lengthOfDstack) {
       this.lengthOfDstack = Math.min(this.lengthOfDstack * 2, this.maxLength);
-      let placeholderDstack = this.Dstack;
+      let previousStack = this.Dstack;
       this.Dstack = new Array(this.lengthOfDstack);
-      this.Dstack = placeholderDstack;
+      this.updateNewStack(previousStack);
     }
     this.Dstack[this.position] = value;
     this.position += 1;
@@ -82,8 +82,20 @@ class Dstack {
      * checking length of Dstack
      * @return {integer}
      */
-    console.log(this.lengthOfDstack, this.Dstack.length), this.Dstack;
     return this.Dstack.length;
+  }
+
+  updateNewStack(previousStack) {
+    /**
+     * when a new dstack is created (when lengthOfDstack is doubled), previous dstack is saved under previousStack.
+     * Adding values from previousStack to the new Dstack.
+     * @param {array} previousStack
+     * @return {Dstack}
+     */
+    for (let i = 0; i < previousStack.length; i++) {
+      this.Dstack[i] = previousStack[i];
+    }
+    return this.Dstack;
   }
 }
 
