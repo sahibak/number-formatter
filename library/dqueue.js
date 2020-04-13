@@ -81,7 +81,6 @@ class Dqueue {
     let poppedValue = this.dqueue[this.head];
     this.dqueue[this.head] = null;
     this.count -= 1;
-    this.resetValuesOnEmpty();
     return poppedValue;
   }
 
@@ -101,7 +100,6 @@ class Dqueue {
     let poppedValue = this.dqueue[this.tail];
     this.dqueue[this.tail] = null;
     this.count -= 1;
-    this.resetValuesOnEmpty();
     return poppedValue;
   }
 
@@ -119,18 +117,6 @@ class Dqueue {
      * @return {integer}
      */
     return this.dqueue.length;
-  }
-
-  resetValuesOnEmpty() {
-    /**
-     * this is a helper function, to reset the values of head and tail when all values have been popped.
-     * @return {integer}
-     */
-    if (this.count === 0) {
-      this.head = 0;
-      this.tail = this.lengthOfDqueue - 1;
-    }
-    return this.head, this.tail;
   }
 }
 

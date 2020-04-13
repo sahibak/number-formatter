@@ -42,7 +42,7 @@ describe("#Updating dqueue1", function () {
     dqueue1.pushToFront("b");
     dqueue1.pushToBack("c");
     let result = dqueue1.pushToFront("z");
-    expect(result).to.eql(["b", "z", null, "c", "a"]);
+    expect(result).to.eql([null, "c", "a", "b", "z"]);
   });
 });
 
@@ -116,7 +116,7 @@ describe("#Should not allow to add values to dqueue with length zero.", function
 
 describe("#updating dqueue5", function () {
   it("should not allow to add value to dqueue after length has been reached.", function () {
-    dqueue5.pushToFront("b");
+    dqueue5.pushToFront("a");
     dqueue5.pushToFront("b");
     let result = dqueue5.size();
     expect(result).to.equal(2);
