@@ -58,8 +58,8 @@ describe("#Updating queue2", function () {
     expect(result).to.eql([null, null, null]);
   });
 
-  it("shoudl give an error when trying to pop from empty queue2", function () {
-    expect(queue2.pop).to.throw();
+  it("should give an error when trying to pop from empty queue2", function () {
+    expect(() => queue2.pop()).to.throw();
   });
 
   it("should maintain the same length as initialization", function () {
@@ -75,7 +75,11 @@ describe("#Updating queue2", function () {
 
 describe("#Remove values from queue with length zero", function () {
   it("throw an error when trying to pop values from queue3", function () {
-    expect(queue3.pop).to.throw();
+    expect(() => queue3.pop()).to.throw();
+  });
+
+  it("should return size of dqueue3", function () {
+    expect(queue3.size()).to.equal(0);
   });
 });
 
