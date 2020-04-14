@@ -4,7 +4,7 @@ class LinkedList {
   constructor() {
     this.data = 0;
     this.next = null;
-    this.linkedList = (this.data, this.null);
+    this.linkedList = (this.data, this.next);
   }
 
   addLink() {
