@@ -21,13 +21,25 @@ class Node {
     return this;
   }
 
-  addLinkToFront() {
-    let newNode = new Node();
-    let previousNodes = this;
-    newNode.next = previousNodes;
-    this.data = newNode.data;
-    this.next = newNode.next;
-    console.log(this);
+  //   addLinkToFront() {
+  //     let newNode = new Node();
+  //     let previousNodes = this;
+  //     newNode.next = previousNodes;
+  //     this.data = newNode.data;
+  //     this.next = newNode.next;
+  //     console.log(this);
+  //     return this;
+  //   }
+
+  removeFirst() {
+    let newNodes = this.next;
+    if (newNodes != null) {
+      this.data = newNodes.data;
+      this.next = newNodes.next;
+      return this;
+    }
+    this.data = null;
+    this.next = null;
     return this;
   }
 

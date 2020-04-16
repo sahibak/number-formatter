@@ -46,16 +46,44 @@ describe("#creating a node", function () {
     expect(node1.containes(3)).to.eql(true);
   });
 
-  it("should add link to the beginning", function () {
-    expect(node1.addLinkToFront()).to.eql({
-      data: 1,
-      next: {
-        data: 1,
-        next: {
-          data: 2,
-          next: { data: 3, next: { data: 4, next: null } }
-        }
-      }
+  //   it("should add link to the beginning", function () {
+  //     expect(node1.addLinkToFront()).to.eql({
+  //       data: 1,
+  //       next: {
+  //         data: 1,
+  //         next: {
+  //           data: 2,
+  //           next: { data: 3, next: { data: 4, next: null } }
+  //         }
+  //       }
+  //     });
+  //   });
+
+  it("should remove the 1st node", function () {
+    expect(node1.removeFirst()).to.eql({
+      data: 2,
+      next: { data: 3, next: { data: 4, next: null } }
+    });
+  });
+
+  it("should remove the 1st node", function () {
+    expect(node1.removeFirst()).to.eql({
+      data: 3,
+      next: { data: 4, next: null }
+    });
+  });
+
+  it("should remove the 1st node", function () {
+    expect(node1.removeFirst()).to.eql({
+      data: 4,
+      next: null
+    });
+  });
+
+  it("should remove the 1st node", function () {
+    expect(node1.removeFirst()).to.eql({
+      data: null,
+      next: null
     });
   });
 
