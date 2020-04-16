@@ -16,20 +16,16 @@ class Node {
      * adding another link to the back
      * eg. intial node => Node(data:1,next:null)
      * new node => Node(data:1, next:(data:1, next:null))
-     * the method checks if the next for first node(this.next) is null, then next node is added here. Otherwise,
      * it runs a while loop till .next is null. Then inserts the new node such that .next: new node.
      * @param {any} data
      * @return {node}
      */
-    let nextNode = this.next;
-    if (nextNode === null) {
-      this.next = new Node(data);
-    } else {
-      while (nextNode.next != null) {
-        nextNode = nextNode.next;
-      }
-      nextNode.next = new Node(data);
+
+    let nextNode = this;
+    while (nextNode.next != null) {
+      nextNode = nextNode.next;
     }
+    nextNode.next = new Node(data);
     return this;
   }
 
@@ -48,6 +44,14 @@ class Node {
     this.next = newNode;
     return this;
   }
+
+  //   addLink(value, positionToInsert){
+  //     //   check if the positionToInsert is an integer or throw error
+  //       if (!Number.isInteger(positionToInsert)) {
+  //           throw new Error("Provide integer value for length.");
+  //       }
+
+  //   }
 
   removeFirst() {
     /**
@@ -81,25 +85,19 @@ class Node {
 
   containes(value) {
     /**
-     * loops through the nodes to find the value.
-     *loop will continue till .next!= null and .data != value.
+     * method to loop through the nodes to find the value.
+     * loop will continue till .next!= null and .data != value. If any of these conditions fail, it will check for value and return true/false.
      * @param {any} value
      * @return {binary}
      */
-
-    let nextData = this.data;
-    if (nextData === value) {
-      return true;
-    } else {
-      let nextNode = this.next;
-      while (nextNode.next != null && nextNode.data != value) {
-        nextNode = nextNode.next;
-      }
-      if (nextNode.data === value) {
-        return true;
-      }
-      return false;
+    let nextNode = this;
+    while (nextNode.next != null && nextNode.data != value) {
+      nextNode = nextNode.next;
     }
+    if (nextNode.data === value) {
+      return true;
+    }
+    return false;
   }
 }
 
