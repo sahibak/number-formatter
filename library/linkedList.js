@@ -1,18 +1,25 @@
 "use strict";
 
-class LinkedList {
+class Node {
   constructor() {
-    this.data = 0;
+    this.data = 1;
     this.next = null;
-    this.linkedList = (this.data, this.next);
   }
 
   addLink() {
-    if (this.data === 0) {
-      this.data += 1;
-      this.next = new LinkedList();
-      console.log(this.linkedList);
-      return this.linkedList;
+    let nextNode = this.next;
+    if (nextNode === null) {
+      this.next = new Node();
+      this.next.data = this.data + 1;
+    } else {
+      while (nextNode.next != null) {
+        nextNode = nextNode.next;
+      }
+      nextNode.next = new Node();
+      nextNode.next.data = nextNode.data + 1;
     }
+    return this;
   }
 }
+
+module.exports = { Node };
