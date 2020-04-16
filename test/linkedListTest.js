@@ -11,23 +11,42 @@ describe("#creating a node", function () {
   });
 
   it("should add first next node to node1", function () {
-    expect(node1.addLink()).to.eql({ data: 1, next: { data: 2, next: null } });
+    expect(node1.addLinkToBack()).to.eql({
+      data: 1,
+      next: { data: 2, next: null }
+    });
   });
 
   it("should add second node to node1", function () {
-    expect(node1.addLink()).to.eql({
+    expect(node1.addLinkToBack()).to.eql({
       data: 1,
       next: { data: 2, next: { data: 3, next: null } }
     });
   });
 
   it("should add third node to node1", function () {
-    expect(node1.addLink()).to.eql({
+    expect(node1.addLinkToBack()).to.eql({
       data: 1,
       next: {
         data: 2,
         next: { data: 3, next: { data: 4, next: null } }
       }
     });
+  });
+
+  it("should find the data 1", function () {
+    expect(node1.containes(1)).to.eql(true);
+  });
+
+  it("should find the data 4", function () {
+    expect(node1.containes(4)).to.eql(true);
+  });
+
+  it("should find the data 3", function () {
+    expect(node1.containes(3)).to.eql(true);
+  });
+
+  it("should empty the node1 to have no links", function () {
+    expect(node1.removeAll()).to.eql({ data: 1, next: null });
   });
 });
