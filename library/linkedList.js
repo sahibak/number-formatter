@@ -33,13 +33,21 @@ class Node {
     return this;
   }
 
-  //   addLinkToFront() {
-  //     let newNode = new Node();
-  //     let previousNodes = this;
-  //     newNode.next = previousNodes;
-  //     this = newNode;
-  //     return this;
-  //   }
+  addLinkToFront(value) {
+    /**
+     * adding a node to the begging of the chain
+     * eg. intial node => Node(data:1, next:(data:2, next:null)) and value = "xyz"
+     * new node => Node(data:"xyz", next:(data:1, next:(data:2, next:null)))
+     * @param {any} value
+     * @return {node}
+     */
+    let newNode = new Node();
+    newNode.data = this.data;
+    newNode.next = this.next;
+    this.data = value;
+    this.next = newNode;
+    return this;
+  }
 
   removeFirst() {
     /**

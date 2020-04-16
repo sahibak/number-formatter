@@ -105,18 +105,18 @@ describe("#tests on node2", function () {
     });
   });
 
-  // it("should add link to the beginning", function () {
-  //   expect(node2.addLinkToFront()).to.eql({
-  //     data: 1,
-  //     next: {
-  //       data: 1,
-  //       next: {
-  //         data: 2,
-  //         next: { data: 3, next: { data: 4, next: null } }
-  //       }
-  //     }
-  //   });
-  // });
+  it("should add link to the beginning", function () {
+    expect(node2.addLinkToFront(55)).to.eql({
+      data: 55,
+      next: {
+        data: "a",
+        next: {
+          data: "b",
+          next: { data: "c", next: { data: "d", next: null } }
+        }
+      }
+    });
+  });
 
   it("should empty the node1 to have no links", function () {
     expect(node2.removeAll()).to.eql({ data: null, next: null });
