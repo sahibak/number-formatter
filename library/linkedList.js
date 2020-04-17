@@ -34,6 +34,8 @@ class Node {
      * adding a node to the begging of the chain
      * eg. intial node => Node(data:1, next:(data:2, next:null)) and value = "xyz"
      * new node => Node(data:"xyz", next:(data:1, next:(data:2, next:null)))
+     * to achive the above, values of this.data and this.next is saved in the newNode => making newNode mimic this.
+     * then at this.data inserting value param and this.next's value to be the new node.
      * @param {any} value
      * @return {node}
      */
@@ -45,13 +47,33 @@ class Node {
     return this;
   }
 
-  //   addLink(value, positionToInsert){
-  //     //   check if the positionToInsert is an integer or throw error
-  //       if (!Number.isInteger(positionToInsert)) {
-  //           throw new Error("Provide integer value for length.");
-  //       }
-
-  //   }
+  addLink(value, positionToInsert) {
+    /**
+     * adding a node to a specific position in the node.
+     * 1st position is considered to be at this.next value
+     * @param {any} value
+     * @param {integer} positionToInsert
+     * @return {node}
+     */
+    if (!Number.isInteger(positionToInsert)) {
+      throw new Error("Provide integer value for position.");
+    }
+    if (positionToInsert === 0) {
+      this.addLinkToFront(value);
+    }
+    let nextNode = this;
+    let currentPosition = 1;
+    while (nextNode.next != null && currentPosition != positionToInsert) {
+      nextNode = nextNode.next;
+      currentPosition += 1;
+    }
+    if (currentPosition === positionToInsert) {
+      let newNode = new Node(value);
+      newNode.next = nextNode.next;
+      nextNode.next = newNode;
+    }
+    return this;
+  }
 
   removeFirst() {
     /**

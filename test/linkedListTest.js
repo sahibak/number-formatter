@@ -5,6 +5,7 @@ const { Node } = require("../library/linkedList");
 
 let node1 = new Node("a");
 let node2 = new Node("a");
+let node3 = new Node("a");
 
 describe("#tests on node1", function () {
   it("should create a new Node", function () {
@@ -120,5 +121,48 @@ describe("#tests on node2", function () {
 
   it("should empty the node1 to have no links", function () {
     expect(node2.removeAll()).to.eql({ data: null, next: null });
+  });
+});
+
+describe("#tests on node3", function () {
+  it("should add links to node3", function () {
+    node3.addLinkToBack("b");
+    node3.addLinkToBack("c");
+    expect(node3.addLinkToBack("d")).to.eql({
+      data: "a",
+      next: {
+        data: "b",
+        next: { data: "c", next: { data: "d", next: null } }
+      }
+    });
+  });
+
+  it("should add a new node on position 2 to node3", function () {
+    expect(node3.addLink("e", 2)).to.eql({
+      data: "a",
+      next: {
+        data: "b",
+        next: {
+          data: "e",
+          next: { data: "c", next: { data: "d", next: null } }
+        }
+      }
+    });
+  });
+
+  it("should add a new node on position 0 to node3", function () {
+    expect(node3.addLink("f", 0)).to.eql({
+      data: "f",
+      next: {
+        data: "a",
+        next: {
+          data: "b",
+          next: {
+            data: "e",
+            next: { data: "c", next: { data: "d", next: null } }
+          }
+        }
+      }
+    });
   });
 });
