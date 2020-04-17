@@ -37,15 +37,15 @@ describe("#tests on node1", function () {
   });
 
   it("should find the data 1", function () {
-    expect(node1.containes(1)).to.eql(true);
+    expect(node1.contains(1)).to.eql(true);
   });
 
   it("should not find the data 4", function () {
-    expect(node1.containes(4)).to.eql(false);
+    expect(node1.contains(4)).to.eql(false);
   });
 
   it("should find the data 3", function () {
-    expect(node1.containes(3)).to.eql(true);
+    expect(node1.contains(3)).to.eql(true);
   });
 
   it("should remove the 1st node", function () {

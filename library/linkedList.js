@@ -105,7 +105,7 @@ class Node {
     return this;
   }
 
-  containes(value) {
+  contains(value) {
     /**
      * method to loop through the nodes to find the value.
      * loop will continue till .next!= null and .data != value. If any of these conditions fail, it will check for value and return true/false.
