@@ -19,6 +19,25 @@ describe("#tests on node1", function () {
       },
     });
   });
+  it("should add second next node to node1", function () {
+    expect(node1.addLinkToBack(2)).to.eql({
+      previous: null,
+      data: "a",
+      next: {
+        previous: { previous: null, data: "a", next: null },
+        data: 1,
+        next: {
+          previous: {
+            previous: { previous: null, data: "a", next: null },
+            data: 1,
+            next: null,
+          },
+          data: 2,
+          next: null,
+        },
+      },
+    });
+  });
 
   //   it("should add second node to node1", function () {
   //     expect(node1.addLinkToBack(2)).to.eql({
