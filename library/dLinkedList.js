@@ -2,7 +2,7 @@
 
 class Node {
   /**
-   * creating a node
+   * creating a node for doubly linked list.
    * @param {any} data
    * @return {node}
    */
