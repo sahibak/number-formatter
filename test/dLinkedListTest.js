@@ -15,8 +15,8 @@ describe("#tests on node1", function () {
       next: {
         previous: { previous: null, data: "a", next: null },
         data: 1,
-        next: null
-      }
+        next: null,
+      },
     });
   });
 
