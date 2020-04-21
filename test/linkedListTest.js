@@ -15,14 +15,14 @@ describe("#tests on node1", function () {
   it("should add first next node to node1", function () {
     expect(node1.addLinkToBack(1)).to.eql({
       data: "a",
-      next: { data: 1, next: null }
+      next: { data: 1, next: null },
     });
   });
 
   it("should add second node to node1", function () {
     expect(node1.addLinkToBack(2)).to.eql({
       data: "a",
-      next: { data: 1, next: { data: 2, next: null } }
+      next: { data: 1, next: { data: 2, next: null } },
     });
   });
 
@@ -31,8 +31,8 @@ describe("#tests on node1", function () {
       data: "a",
       next: {
         data: 1,
-        next: { data: 2, next: { data: 3, next: null } }
-      }
+        next: { data: 2, next: { data: 3, next: null } },
+      },
     });
   });
 
@@ -51,28 +51,28 @@ describe("#tests on node1", function () {
   it("should remove the 1st node", function () {
     expect(node1.removeFirst()).to.eql({
       data: 1,
-      next: { data: 2, next: { data: 3, next: null } }
+      next: { data: 2, next: { data: 3, next: null } },
     });
   });
 
   it("should remove the 1st node", function () {
     expect(node1.removeFirst()).to.eql({
       data: 2,
-      next: { data: 3, next: null }
+      next: { data: 3, next: null },
     });
   });
 
   it("should remove the 1st node", function () {
     expect(node1.removeFirst()).to.eql({
       data: 3,
-      next: null
+      next: null,
     });
   });
 
   it("should remove the 1st node", function () {
     expect(node1.removeFirst()).to.eql({
       data: null,
-      next: null
+      next: null,
     });
   });
 });
@@ -85,14 +85,14 @@ describe("#tests on node2", function () {
   it("should add first next node to node2", function () {
     expect(node2.addLinkToBack("b")).to.eql({
       data: "a",
-      next: { data: "b", next: null }
+      next: { data: "b", next: null },
     });
   });
 
   it("should add second node to node2", function () {
     expect(node2.addLinkToBack("c")).to.eql({
       data: "a",
-      next: { data: "b", next: { data: "c", next: null } }
+      next: { data: "b", next: { data: "c", next: null } },
     });
   });
 
@@ -101,8 +101,8 @@ describe("#tests on node2", function () {
       data: "a",
       next: {
         data: "b",
-        next: { data: "c", next: { data: "d", next: null } }
-      }
+        next: { data: "c", next: { data: "d", next: null } },
+      },
     });
   });
 
@@ -113,9 +113,9 @@ describe("#tests on node2", function () {
         data: "a",
         next: {
           data: "b",
-          next: { data: "c", next: { data: "d", next: null } }
-        }
-      }
+          next: { data: "c", next: { data: "d", next: null } },
+        },
+      },
     });
   });
 
@@ -132,8 +132,8 @@ describe("#tests on node3", function () {
       data: "a",
       next: {
         data: "b",
-        next: { data: "c", next: { data: "d", next: null } }
-      }
+        next: { data: "c", next: { data: "d", next: null } },
+      },
     });
   });
 
@@ -144,9 +144,9 @@ describe("#tests on node3", function () {
         data: "b",
         next: {
           data: "e",
-          next: { data: "c", next: { data: "d", next: null } }
-        }
-      }
+          next: { data: "c", next: { data: "d", next: null } },
+        },
+      },
     });
   });
 
@@ -159,10 +159,10 @@ describe("#tests on node3", function () {
           data: "b",
           next: {
             data: "e",
-            next: { data: "c", next: { data: "d", next: null } }
-          }
-        }
-      }
+            next: { data: "c", next: { data: "d", next: null } },
+          },
+        },
+      },
     });
   });
 
@@ -181,11 +181,11 @@ describe("#tests on node3", function () {
             data: "e",
             next: {
               data: "c",
-              next: { data: "d", next: { data: "z", next: null } }
-            }
-          }
-        }
-      }
+              next: { data: "d", next: { data: "z", next: null } },
+            },
+          },
+        },
+      },
     });
   });
 });
