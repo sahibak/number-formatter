@@ -14,20 +14,25 @@ class Node {
 
   addLinkToBack(data) {
     /**
+     * Adding values to the end of the doubly linked list.
+     * storing previous node's value in lastNode. If lastNode is null, then it means that it referencing the first link and hence it is reset to nextNode value.
+     * Eg. Node = {previous: null, data:1, next = null} -> Inserting value here will cause lastNode to be null. Therefore, lastNode is reset to Node.
      * @param {any} data
      * @return {node}
      */
-
     let nextNode = this;
-
+    let lastNode = nextNode.next;
     while (nextNode.next != null) {
+      lastNode = nextNode;
       nextNode = nextNode.next;
     }
-    console.log("nextNode", nextNode);
+    lastNode === null ? (lastNode = nextNode) : lastNode;
     let newNode = new Node(data);
-    newNode.previous = new Node(nextNode.data);
-    newNode.previous.previous = nextNode.previous;
+    // This is option 1 to insert prev node's val
+    // newNode.previous = lastNode;
     nextNode.next = newNode;
+    // This is option 2 to insert prev node's val
+    nextNode.next.previous = lastNode;
     console.log("-----------", this);
     return this;
   }
