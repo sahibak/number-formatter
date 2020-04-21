@@ -39,8 +39,7 @@ class Node {
      * @param {any} value
      * @return {node}
      */
-    let newNode = new Node();
-    newNode.data = this.data;
+    let newNode = new Node(this.data);
     newNode.next = this.next;
     this.data = value;
     this.next = newNode;
@@ -60,6 +59,7 @@ class Node {
     }
     if (positionToInsert === 0) {
       this.addLinkToFront(value);
+      return this;
     }
     let nextNode = this;
     let currentPosition = 1;
@@ -71,8 +71,9 @@ class Node {
       let newNode = new Node(value);
       newNode.next = nextNode.next;
       nextNode.next = newNode;
+      return this;
     }
-    return this;
+    throw new Error("");
   }
 
   removeFirst() {
@@ -84,10 +85,10 @@ class Node {
      * otherwise, it will remove the first link and set the second link as first.
      * @return {node}
      */
-    let newNodes = this.next;
-    if (newNodes != null) {
-      this.data = newNodes.data;
-      this.next = newNodes.next;
+    let newNode = this.next;
+    if (newNode != null) {
+      this.data = newNode.data;
+      this.next = newNode.next;
       return this;
     }
     this.data = null;
