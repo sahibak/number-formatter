@@ -11,7 +11,19 @@ class Node {
     this.data = data;
     this.next = null;
   }
+  
+  addLinkToBack2(data){
+    let lastNode = new Node(data);
+    let nextNode = this;
+    while (nextNode.next != null) {
+      nextNode = nextNode.next;
+    }
+    
+    nextNode.next = lastNode;
+    lastNode.previous = nextNode;
+  }
 
+  
   addLinkToBack(data) {
     /**
      * Adding values to the end of the doubly linked list.
