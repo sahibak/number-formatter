@@ -15,8 +15,8 @@ describe("#tests on node1", function () {
       next: {
         previous: { previous: null, data: "a", next: null },
         data: 1,
-        next: null,
-      },
+        next: null
+      }
     });
   });
   it("should add second next node to node1", function () {
@@ -26,16 +26,8 @@ describe("#tests on node1", function () {
       next: {
         previous: { previous: null, data: "a", next: null },
         data: 1,
-        next: {
-          previous: {
-            previous: { previous: null, data: "a", next: null },
-            data: 1,
-            next: null,
-          },
-          data: 2,
-          next: null,
-        },
-      },
+        next: { previous: [Node], data: 2, next: null }
+      }
     });
   });
 

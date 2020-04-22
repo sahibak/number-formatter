@@ -21,18 +21,22 @@ class Node {
      * @return {node}
      */
     let nextNode = this;
-    let lastNode = nextNode.next;
+    let lastNode = new Node(this.data);
+    lastNode.previous = this.previous;
+    lastNode.next = this.next;
+
     while (nextNode.next != null) {
-      lastNode = nextNode;
+      lastNode.previous = nextNode.previous;
+      lastNode.data = nextNode.data;
+      lastNode.next = nextNode.next;
       nextNode = nextNode.next;
     }
-    lastNode === null ? (lastNode = nextNode) : lastNode;
     let newNode = new Node(data);
     // This is option 1 to insert prev node's val
-    // newNode.previous = lastNode;
+    newNode.previous = lastNode;
     nextNode.next = newNode;
     // This is option 2 to insert prev node's val
-    nextNode.next.previous = lastNode;
+    // nextNode.next.previous = lastNode;
     console.log("-----------", this);
     return this;
   }
