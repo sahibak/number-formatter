@@ -81,7 +81,7 @@ class Node {
      * removing the first node in the chain
      * eg. intial node => Node(data:1, next:(data:2, next:null))
      * new node => Node(data:2,next:null)
-     * if there are no links, it will make the class values of keys to be null
+     * if there are no links, it will make the values of keys to be null
      * otherwise, it will remove the first link and set the second link as first.
      * @return {node}
      */
