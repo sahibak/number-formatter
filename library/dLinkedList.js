@@ -15,8 +15,12 @@ class Node {
   addLinkToBack(data) {
     /**
      * Adding values to the end of the doubly linked list.
-     * storing previous node's value in lastNode. If lastNode is null, then it means that it referencing the first link and hence it is reset to nextNode value.
-     * Eg. Node = {previous: null, data:1, next = null} -> Inserting value here will cause lastNode to be null. Therefore, lastNode is reset to Node.
+     * storing previous node's value in lastNode.
+     * In the begining, lastNode = values in this.
+     * Eg. this = Node1 = {previous: null, data:1, next = null}
+     * after addition,
+     *  Node 1 = {previous: null, data:1, next = Node2}
+     *  Node 2 = {previous: Node1, data:2, next = null}
      * @param {any} data
      * @return {node}
      */
@@ -32,32 +36,30 @@ class Node {
       nextNode = nextNode.next;
     }
     let newNode = new Node(data);
-    // This is option 1 to insert prev node's val
     newNode.previous = lastNode;
     nextNode.next = newNode;
-    // This is option 2 to insert prev node's val
-    // nextNode.next.previous = lastNode;
-    console.log("-----------", this);
     return this;
   }
 
-  //   addLinkToFront(value) {
-  //     /**
-  //      * adding a node to the begging of the chain
-  //      * eg. intial node => Node(data:1, next:(data:2, next:null)) and value = "xyz"
-  //      * new node => Node(data:"xyz", next:(data:1, next:(data:2, next:null)))
-  //      * to achive the above, values of this.data and this.next is saved in the newNode => making newNode mimic this.
-  //      * then at this.data inserting value param and this.next's value to be the new node.
-  //      * @param {any} value
-  //      * @return {node}
-  //      */
-  //     let newNode = new Node();
-  //     newNode.data = this.data;
-  //     newNode.next = this.next;
-  //     this.data = value;
-  //     this.next = newNode;
-  //     return this;
-  //   }
+  addLinkToFront(value) {
+    /**
+     * adding a node to the begging of the chain
+     * Eg. this = Node1 = {previous: null, data:1, next = null}
+     * after addition,
+     *  Node 1 = {previous: null, data:2, next = Node2}
+     *  Node 2 = {previous: Node1, data:1, next = null}
+     * to achive the above, values of this.data and this.next is saved in the newNode => making newNode mimic "this".
+     * then at this.data inserting value param and setting this.next = new node.
+     * @param {any} value
+     * @return {node}
+     */
+    let newNode = new Node();
+    newNode.data = this.data;
+    newNode.next = this.next;
+    newNode.previous = this.data = value;
+    this.next = newNode;
+    return this;
+  }
 
   //   addLink(value, positionToInsert) {
   //     /**
