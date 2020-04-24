@@ -9,26 +9,13 @@ let node3 = new Node("a");
 
 describe("#tests on node1", function () {
   it("should add first next node to node1", function () {
-    expect(node1.addLinkToBack(1)).to.eql({
-      previous: null,
-      data: "a",
-      next: {
-        previous: { previous: null, data: "a", next: null },
-        data: 1,
-        next: null,
-      },
-    });
+    node1.addLinkToBack(1);
+    expect(node1.addLinkToBackCheck()).to.eql(["a", 1]);
   });
+
   it("should add second next node to node1", function () {
-    expect(node1.addLinkToBack(2)).to.eql({
-      previous: null,
-      data: "a",
-      next: {
-        previous: { previous: null, data: "a", next: null },
-        data: 1,
-        next: { previous: [Node], data: 2, next: null },
-      },
-    });
+    node1.addLinkToBack(2);
+    expect(node1.addLinkToBackCheck()).to.eql(["a", 1, 2]);
   });
 
   //   it("should add second node to node1", function () {
