@@ -39,23 +39,25 @@ class Node {
      * Eg. this = Node1 = {previous: null, data:1, next = null}
      * after addition,
      *  Node 1 = {previous: null, data:2, next = Node2}
-     *  Node 2 = {previous: Node1, data:1, next = null}
-     * to achive the above, values of this.data and this.next is saved in the newNode => making newNode mimic "this".
-     * then at this.data inserting value param and setting this.next = new node.
+     *  Node 2 = {previous: Node1, data:1, next = null} -> newNode
+     * to achive the above,
+     *  values of this.data, this.next are saved in the newNode => making newNode mimic "this".
+     *  newnodes' previous is set to Node1
+     *  then at this.data inserting value param and setting this.next = new node.
      * @param {any} value
      * @return {node}
      */
-    let newNode = new Node();
-    newNode.data = this.data;
+    let newNode = new Node(this.data);
+    newNode.previous = this;
     newNode.next = this.next;
-    newNode.previous = this.data = value;
+    this.data = value;
     this.next = newNode;
     return this;
   }
 
-  addLinkToBackCheck() {
+  addLinkCheck() {
     /**
-     * To test the data inserted after using addLinkToBack function
+     * To test the data inserted after using addLink functions above
      * @return {array}
      */
     let dataInNodes = [this.data];
