@@ -11,6 +11,8 @@ describe("#tests on node1", function () {
     node1.addLink(5);
     node1.addLink(9);
     node1.addLink(-1);
+    node1.addLink(20);
+    node1.addLink(11);
     expect(node1).to.eql({
       left: {
         left: {
@@ -27,9 +29,17 @@ describe("#tests on node1", function () {
       },
       data: 10,
       right: {
-        left: null,
+        left: {
+          left: null,
+          data: 11,
+          right: null,
+        },
         data: 15,
-        right: null,
+        right: {
+          left: null,
+          data: 20,
+          right: null,
+        },
       },
     });
   });
