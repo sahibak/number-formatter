@@ -19,13 +19,16 @@ describe("#tests on node1", function () {
           left: null,
           data: -1,
           right: null,
+          totalNodesinTree: 1
         },
         data: 5,
         right: {
           left: null,
           data: 9,
           right: null,
+          totalNodesinTree: 1
         },
+        totalNodesinTree: 1
       },
       data: 10,
       right: {
@@ -33,14 +36,21 @@ describe("#tests on node1", function () {
           left: null,
           data: 11,
           right: null,
+          totalNodesinTree: 1
         },
         data: 15,
         right: {
           left: null,
           data: 20,
           right: null,
+          totalNodesinTree: 1
         },
+        totalNodesinTree: 1
       },
+      totalNodesinTree: 7
     });
+  });
+  it("should print all values", function () {
+    expect(node1.printTreeByBreadth()).to.eql([10, 15, 5, 20, 11, 9, -1]);
   });
 });

@@ -13,6 +13,7 @@ class Node {
     this.left = null;
     this.data = data;
     this.right = null;
+    this.totalNodesinTree = 1;
   }
 
   addLink(data) {
@@ -25,6 +26,7 @@ class Node {
      * @return {node}
      */
     let nextNode = this;
+    this.totalNodesinTree += 1;
     while (nextNode != null) {
       if (nextNode.data < data && nextNode.right != null) {
         nextNode = nextNode.right;
@@ -41,23 +43,22 @@ class Node {
     return this;
   }
 
-  //   printTree(nodes) {
-  //     let currentNodes = [];
-  //     let newNodes = [];
-  //     currentNodes.push(nodes);
-  //     console.log(currentNodes);
-  //     for (let i = 0; i < currentNodes.length; i++) {
-  //       console.log(currentNodes[i].data);
-  //       currentNodes[i].right != null
-  //         ? nextNodes.push(currentNodes[i].right)
-  //         : null;
-  //       currentNodes[i].left != null
-  //         ? nextNodes.push(currentNodes[i].left)
-  //         : null;
-  //     }
-  //     nodes = newNodes;
-  //     nodes.length > 0 ? this.printTree(nodes) : null;
-  //   }
+  printTreeByBreadth() {
+    let valuesInNodes = [];
+    let countOfNodes = this.totalNodesinTree;
+    let currentNodes = [this];
+    while (countOfNodes > 0) {
+      let nextNodes = [];
+      for (let i = 0; i < currentNodes.length; i++) {
+        valuesInNodes.push(currentNodes[i].data);
+        nextNodes.push(currentNodes[i].right);
+        nextNodes.push(currentNodes[i].left);
+        countOfNodes -= 1;
+      }
+      currentNodes = nextNodes;
+    }
+    return valuesInNodes;
+  }
 }
 
 module.exports = { Node };
