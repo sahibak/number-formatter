@@ -59,6 +59,29 @@ class Node {
     }
     return valuesInNodes;
   }
+
+  printTreeByDepth() {
+    let valuesInNodes = [this.data];
+    let leftNodes = [];
+    let countOfNodes = this.totalNodesinTree - 1;
+    let currentNode = this;
+    let adjustedIndex = 1;
+    while (countOfNodes > 0) {
+      currentNode.left != null ? leftNodes.push(currentNode.left) : null;
+      if (currentNode.right != null) {
+        currentNode = currentNode.right;
+      } else {
+        currentNode = leftNodes[leftNodes.length - adjustedIndex];
+        adjustedIndex += 1;
+        leftNodes.length - adjustedIndex < 0
+          ? (adjustedIndex = 1)
+          : adjustedIndex;
+      }
+      valuesInNodes.push(currentNode.data);
+      countOfNodes -= 1;
+    }
+    return valuesInNodes;
+  }
 }
 
 module.exports = { Node };
