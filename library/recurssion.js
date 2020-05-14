@@ -125,3 +125,5 @@ class PractiseArrays {
     }
   }
 }
+
+module.exports = { PractiseSum, PractiseArrays };
