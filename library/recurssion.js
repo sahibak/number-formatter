@@ -1,6 +1,6 @@
 /*link: http://www.bowdoin.edu/~ltoma/teaching/cs107/spring05/recursion.html*/
 
-function sumOfNNumbers(number, total = 0, startingNumber = 1) {
+function sumOfNNumbers(number) {
   /** 
       Exercise 1
       Write a recursive function that computes the sum of all numbers from 1 to n, where n is given as parameter.
@@ -8,16 +8,13 @@ function sumOfNNumbers(number, total = 0, startingNumber = 1) {
       Function returns the sum of 1 to n numbers
       Assumption: Only positive integers are provided as input
       @param {integer} number
-      @param {integer} total
-      @param {integer} startingNumber
       @return {integer}
       */
-  if (startingNumber > number) {
-    return total;
+  if (number > 0) {
+    number -= 1;
+    return number + sumOfNNumbers(number);
   } else {
-    total = total + startingNumber;
-    startingNumber += 1;
-    return sumOfNNumbers(number, total, startingNumber);
+    return number;
   }
 }
 
