@@ -44,7 +44,7 @@ function findMinimum(listOfValues, size) {
   }
 }
 
-function findSumOfArray(listOfValues, size, total = 0, position = 0) {
+function findSumOfArray(listOfValues, size) {
   /**
     Exercise 3
     Write a recursive function that computes and returns the sum of all elements in an array, where the array and its size are given as parameters
@@ -53,16 +53,13 @@ function findSumOfArray(listOfValues, size, total = 0, position = 0) {
     Assumption: Only positive integers are provided as size input
     @param { array } listOfValues
     @param {integer} size
-    @param {integer} total
-    @param {integer} position
     @return {integer}
     */
-  if (position === size) {
-    return total;
+  size -= 1;
+  if (size > 0) {
+    return listOfValues[size] + findSumOfArray(listOfValues, size);
   } else {
-    total = total + listOfValues[position];
-    position += 1;
-    return findSumOfArray(listOfValues, size, total, position);
+    return listOfValues[size];
   }
 }
 
