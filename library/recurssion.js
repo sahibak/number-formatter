@@ -21,7 +21,7 @@ function sumOfNNumbers(number, total = 0, startingNumber = 1) {
   }
 }
 
-function findMinimum(listOfValues, size, minimumValue = 0, position = 0) {
+function findMinimum(listOfValues, size) {
   /**
     Exercise 2
     Write a recursive function that finds and returns the minimum element in an array, where the array and its size are given as parameters.
@@ -30,22 +30,17 @@ function findMinimum(listOfValues, size, minimumValue = 0, position = 0) {
     Assumption: Only positive integers are provided as size input
     @param { array } listOfValues
     @param {integer} size
-    @param {integer} minimumValue
-    @param {integer} position
     @return {integer}
     */
-  if (position === size) {
-    return minimumValue;
+  size -= 1;
+  if (size != 0) {
+    return Math.min(
+      listOfValues[size],
+      listOfValues[size - 1],
+      findMinimum(listOfValues, size)
+    );
   } else {
-    if (position === 0) {
-      minimumValue = listOfValues[position];
-    } else {
-      listOfValues[position] < minimumValue
-        ? (minimumValue = listOfValues[position])
-        : minimumValue;
-    }
-    position += 1;
-    return findMinimum(listOfValues, size, minimumValue, position);
+    return listOfValues[size];
   }
 }
 
