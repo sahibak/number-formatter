@@ -11,8 +11,7 @@ function sumOfNNumbers(number) {
       @return {integer}
       */
   if (number > 0) {
-    number -= 1;
-    return number + sumOfNNumbers(number);
+    return number + sumOfNNumbers(number - 1);
   } else {
     return number;
   }
@@ -30,12 +29,8 @@ function findMinimum(listOfValues, size) {
     @return {integer}
     */
   size -= 1;
-  if (size != 0) {
-    return Math.min(
-      listOfValues[size],
-      listOfValues[size - 1],
-      findMinimum(listOfValues, size)
-    );
+  if (size > 0) {
+    return Math.min(listOfValues[size], findMinimum(listOfValues, size));
   } else {
     return listOfValues[size];
   }
