@@ -5,7 +5,7 @@ const {
   sumOfNNumbers,
   findMinimum,
   findSumOfArray,
-  findPalindrome
+  findPalindrome,
 } = require("../library/recurssion");
 
 describe("#tests for recurssion on integers", function () {

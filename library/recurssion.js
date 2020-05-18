@@ -67,7 +67,6 @@ function findPalindrome(listOfValues, size) {
     @return {integer}
     */
   size -= 1;
-
   if (size <= 0) {
     return 1;
   } else {
