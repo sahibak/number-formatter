@@ -55,14 +55,7 @@ function findSumOfArray(listOfValues, size) {
   }
 }
 
-function findPalindrome(
-  listOfValues,
-  size,
-  arrayFromFront = "",
-  positionFromFront = 0,
-  arrayFromBack = "",
-  positionFromBack = size - 1
-) {
+function findPalindrome(listOfValues, size) {
   /**
     Exercise 4
     Write a recursive function that determines whether an array is a palindrome, where the array and its size are given as parameters.
@@ -71,35 +64,22 @@ function findPalindrome(
     Assumption: Only positive integers are provided as size input
     @param { array } listOfValues
     @param {integer} size
-    @param {string} arrayFromFront
-    @param {integer} positionFromFront
-    @param {string} arrayFromBack
-    @param {integer} positionFromBack
     @return {integer}
     */
-  if (positionFromFront === size) {
-    console.log(
-      arrayFromBack,
-      arrayFromFront,
-      arrayFromFront === arrayFromBack
-    );
-    if (arrayFromFront === arrayFromBack) {
-      return 1;
-    }
-    return 0;
+  size -= 1;
+
+  if (size <= 0) {
+    return 1;
   } else {
-    arrayFromFront = arrayFromFront + listOfValues[positionFromFront];
-    positionFromFront += 1;
-    arrayFromBack = arrayFromBack + listOfValues[positionFromBack];
-    positionFromBack -= 1;
-    return findPalindrome(
-      listOfValues,
-      size,
-      arrayFromFront,
-      positionFromFront,
-      arrayFromBack,
-      positionFromBack
-    );
+    if (listOfValues[0] === listOfValues[size]) {
+      updatedListOfValues = listOfValues;
+      updatedListOfValues.pop();
+      updatedListOfValues.shift();
+      size -= 1;
+      return findPalindrome(updatedListOfValues, size);
+    } else {
+      return 0;
+    }
   }
 }
 
