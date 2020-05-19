@@ -6,7 +6,8 @@
   "scripts": {
     "test": "mocha --reporter spec",
     "cover": "node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha -- -R spec test/*",
-    "format": "npx prettier@2.0.2 --write library/**.js test/**.js"
+    "format": "npx prettier@2.0.2 --write library/**.js test/**.js",
+    "formatCheck": "npx prettier@2.0.2 --c library/**.js test/**.js"
   },
   "repository": {
     "type": "git",
@@ -25,5 +26,8 @@
     "istanbul": "^0.4.5",
     "mocha": "^7.1.1",
     "prettier": "2.0.2"
+  },
+  "dependencies": {
+    "npm": "^6.14.5"
   }
 }
