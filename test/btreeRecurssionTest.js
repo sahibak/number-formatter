@@ -43,6 +43,22 @@ describe("#tests on node1", function () {
       right: { left: null, data: 15, right: null },
     });
   });
+
+  it("should add nodes to right in node1", function () {
+    expect(node1.addLink(node1, 20)).to.eql({
+      left: {
+        left: { left: null, data: 4, right: null },
+        data: 8,
+        right: { left: null, data: 9, right: null },
+      },
+      data: 10,
+      right: {
+        left: null,
+        data: 15,
+        right: { left: null, data: 20, right: null },
+      },
+    });
+  });
 });
 
 describe("#tests on node2", function () {
