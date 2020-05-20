@@ -59,6 +59,26 @@ describe("#tests on node1", function () {
       },
     });
   });
+
+  it("should search through the tree to find the data", function () {
+    expect(node1.searchTree(node1, 9)).to.equal("value exists");
+  });
+
+  it("should search through the tree to find the data", function () {
+    expect(node1.searchTree(node1, 20)).to.equal("value exists");
+  });
+
+  it("should search through the tree to find the data", function () {
+    expect(node1.searchTree(node1, 88)).to.equal("value does not exist");
+  });
+
+  it("should search through the tree to find the data", function () {
+    expect(node1.searchTree(node1, 10)).to.equal("value exists");
+  });
+
+  it("should search through the tree to find the data", function () {
+    expect(node1.searchTree(node1, -10)).to.equal("value does not exist");
+  });
 });
 
 describe("#tests on node2", function () {

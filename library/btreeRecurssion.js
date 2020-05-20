@@ -36,6 +36,28 @@ class Node {
       return this.addLink(nextNode, data);
     }
   }
+
+  searchTree(nextNode, data) {
+    /**
+     * Searching through the tree to find the value.
+     * @param {any} data
+     * @return {string}
+     */
+    if (nextNode.data === data) {
+      return "value exists";
+    }
+    if (nextNode.data > data && nextNode.left != null) {
+      nextNode = nextNode.left;
+      return this.searchTree(nextNode, data);
+    } else if (nextNode.data > data && nextNode.left === null) {
+      return "value does not exist";
+    } else if (nextNode.data < data && nextNode.right != null) {
+      nextNode = nextNode.right;
+      return this.searchTree(nextNode, data);
+    } else if (nextNode.data < data && nextNode.right === null) {
+      return "value does not exist";
+    }
+  }
 }
 
 module.exports = { Node };
