@@ -82,6 +82,9 @@ describe("#tests on node1", function () {
 });
 
 describe("#tests on node2", function () {
+  it("should not find value in empty node", function () {
+    expect(node2.searchTree(node2, 10)).to.equal("value does not exist");
+  });
   it("should add root node", function () {
     expect(node2.addLink(node2, 15)).to.eql({
       left: null,
