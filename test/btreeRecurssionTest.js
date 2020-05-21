@@ -79,6 +79,10 @@ describe("#tests on node1", function () {
   it("should search through the tree to find the data", function () {
     expect(node1.searchTree(node1, -10)).to.equal("value does not exist");
   });
+
+  it("should search through the tree to find the data", function () {
+    expect(node1.searchTree(node1, 4)).to.equal("value exists");
+  });
 });
 
 describe("#tests on node2", function () {
